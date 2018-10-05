@@ -1,6 +1,6 @@
 """
 VGG network
-  This code is completely same as pytorch (https://github.com/pytorch/vision/blob/master/torchvision/models/vgg.py)
+  This implementation is completely same as pytorch (https://github.com/pytorch/vision/blob/master/torchvision/models/vgg.py)
   For details, please refer to the original paper (https://arxiv.org/pdf/1409.1556.pdf)
 """
 
