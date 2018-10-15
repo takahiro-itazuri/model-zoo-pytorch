@@ -69,7 +69,7 @@ class AlexNet_v2(nn.Module):
     num_classes (int): the number of classes
   """
   def __init__(self, num_classes=1000):
-    super(AlexNet, self).__init__()
+    super(AlexNet_v2, self).__init__()
     self.features = nn.Sequential(
       nn.Conv2d(3, 64, kernel_size=11, stride=4, padding=2),
       nn.ReLU(inplace=True),
@@ -90,7 +90,7 @@ class AlexNet_v2(nn.Module):
       nn.Linear(256 * 6 * 6, 4096),
       nn.ReLU(inplace=True),
       nn.Dropout(),
-      nn.Linaer(4096, 4096),
+      nn.Linear(4096, 4096),
       nn.ReLU(inplace=True),
       nn.Linear(4096, num_classes)
     )
