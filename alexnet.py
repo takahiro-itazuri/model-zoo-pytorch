@@ -55,7 +55,7 @@ class AlexNet_v1(nn.Module):
     )
 
   def forward(self, x):
-    x = self.features()
+    x = self.features(x)
     x = x.view(x.size(0), 256 * 6 * 6)
     x = self.classifier(x)
     return x
@@ -96,7 +96,7 @@ class AlexNet_v2(nn.Module):
     )
 
   def forward(self, x):
-    x = self.features()
+    x = self.features(x)
     x = x.view(x.size(0), 256 * 6 * 6)
     x = self.classifier(x)
     return x
