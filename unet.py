@@ -27,7 +27,7 @@ class DoubleConv(nn.Module):
         nn.ReLU(True)
       )
 
-  def forward(self, x)
+  def forward(self, x):
     x = self.conv(x)
     return x
 
