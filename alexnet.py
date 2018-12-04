@@ -16,6 +16,8 @@ __all__ = ['AlexNet_v1', 'alexnet_v1', 'AlexNet_v2', 'alexnet_v2']
 
 class ConvBlock(nn.Module):
   def __init__(self, in_channels, out_channels, kernel_size, stride=1, padding=0, use_bn=True):
+    super(ConvBlock, self).__init__()
+
     if use_bn:
       self.conv = nn.Sequential(
         nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding),
@@ -79,6 +81,7 @@ class AlexNet_v2(nn.Module):
   """
   def __init__(self, num_classes=1000, use_bn=True):
     super(AlexNet_v2, self).__init__()
+
     self.features = nn.Sequential(
       ConvBlock(in_channels=3, out_channels=64, kernel_size=11, stride=4, padding=2, use_bn=use_bn),
       nn.MaxPool2d(kernel_size=3, stride=2),
@@ -89,6 +92,7 @@ class AlexNet_v2(nn.Module):
       ConvBlock(in_channels=256, out_channels=256, kernel_size=3, padding=1, use_bn=use_bn),
       nn.MaxPool2d(kernel_size=3, stride=2)
     )
+
     self.classifier = nn.Sequential(
       nn.Dropout(),
       nn.Linear(256 * 6 * 6, 4096),
@@ -106,7 +110,7 @@ class AlexNet_v2(nn.Module):
     return x
 
 
-def alexnet_v1(pretrained=False, num_classes, use_bn=True):
+def alexnet_v1(pretrained=False, num_classes=1000, use_bn=True):
   """AlexNet model (version 1)
 
   Currently, pre-trained model is not available.
@@ -120,7 +124,7 @@ def alexnet_v1(pretrained=False, num_classes, use_bn=True):
   return model
 
 
-def alexnet_v2(pretrained=False, **kwargs):
+def alexnet_v2(pretrained=False, num_classes=1000, use_bn=True):
   """AlexNet model (version 2)
 
   Args:
